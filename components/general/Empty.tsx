@@ -4,8 +4,10 @@ interface Props {
 
 const Empty = ({ message }: Props) => {
     return (
-        <div className="h-60 w-full flex bg-white text-red-600 border border-red-200 font-semibold justify-center items-center rounded-md">
-            <p>{message}</p>
+        <div className="flex justify-center items-center my-10">
+            <div className="flex justify-center items-center h-60 w-3/4 bg-white text-red-600 border border-red-200 font-semibold rounded-md">
+                <p>{message}</p>
+            </div>
         </div>
     )
 }

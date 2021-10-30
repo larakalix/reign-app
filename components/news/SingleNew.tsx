@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { HeartIcon } from '@heroicons/react/solid';
-import { HeartIcon as HeartIconOutline } from '@heroicons/react/outline';
 import { Hit } from "../../interfaces/news";
+import SingleNewContent from './SingleNewContent';
 
 interface Props {
   hit: Hit;
@@ -11,21 +10,24 @@ interface Props {
 const SingleNew = ({ hit }: Props) => {
 
   const [fav, setFav] = useState(false);
-  const { author, story_title, story_url, url } = hit;
+  const { objectID, author, created_at, story_title, story_url, url } = hit;
+
+  const classRef = useRef("relative flex flex-col items-start w-full p-4 border-2 rounded-md overflow-hidden");
 
   return (
-    <Link href={story_url ? story_url! : url!}>
-      <a className="relative flex flex-col items-start w-full px-4 py-6 border-2 rounded-md overflow-hidden hover:cursor-pointer">
-        <p className="text-xs capitalize w-3/4 text-gray-500 font-light">Author: <b>{author}</b></p>
-        <p className="text-sm text-gray-600 font-semibold" dangerouslySetInnerHTML={{ __html: story_title! }} />
-        <button className="absolute z-50 flex justify-center items-center h-full w-1/5 bg-gray-100 top-0 right-0">
-          {
-            fav
-              ? (<HeartIcon className="h-5 w-5 text-red-600" />)
-              : (<HeartIconOutline className="h-5 w-5 text-red-600" />)
-          }
-        </button>
-      </a></Link>
+    (story_url || url)
+      ? (
+        <Link href={story_url ? story_url! : url!}>
+          <a target="_blank" className={`${classRef.current} hover:cursor-pointer hover:`}>
+            <SingleNewContent key={objectID} {...{ author, created_at, story_title, fav }} />
+          </a>
+        </Link>
+      )
+      : (
+        <div className={`${classRef.current} hover:cursor-not-allowed`}>
+          <SingleNewContent key={objectID} {...{ author, created_at, story_title, fav }} />
+        </div>
+      )
   );
 };
 

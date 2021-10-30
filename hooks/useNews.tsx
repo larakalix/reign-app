@@ -14,7 +14,7 @@ const useNews = () => {
 
     const getNews = async ({ query, page }: Props) => await api
         .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}`)
-        .then((response) => saveNews(response.data));
+        .then((response) => saveNews(response.data as New));
 
     useEffect(() => {
         getNews({ query: 'reactjs', page: 0 });

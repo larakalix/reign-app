@@ -47,15 +47,19 @@ const News = () => {
           ))}
         </ul>
       </div>
-      <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {
-          hits?.length > 0 ?
-            hits.map((hit) => (
-              <SingleNew key={hit.objectID} hit={hit} />
-            ))
-            : <Empty message="No news found" />
-        }
-      </div>
+      {
+        hits?.length > 0 ?
+          (
+            <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+              {
+                hits.map((hit) => (
+                  <SingleNew key={hit.objectID} hit={hit} />
+                ))
+              }
+            </div>
+          )
+          : <Empty message="No news found" />
+      }
     </div>
   );
 };
