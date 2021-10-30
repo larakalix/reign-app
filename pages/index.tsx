@@ -1,15 +1,13 @@
 import React from "react";
-import Header from "../components/header";
-import News from "../components/news/news";
+import Header from "../components/Header";
+import News from "../components/news/News";
 
 const Index = () => {
   return (
     <>
       <Header title="Hacker News" />
 
-      <div className="flex justify-center p-4">
-        <News />
-      </div>
+      <News />
     </>
   );
 };
