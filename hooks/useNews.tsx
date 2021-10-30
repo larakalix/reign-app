@@ -25,16 +25,17 @@ const useNews = () => {
         getNews({ query: 'reactjs', page: 0 });
 
         const data = JSON.parse(localStorage.getItem('favs')!);
-        console.log('data', data)
-        localStorage.setItem('favs', JSON.stringify(data));
-        addFavs(data);
+        if (data) {
+            localStorage.setItem('favs', JSON.stringify(data));
+            addFavs(data);
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         if (window)
-            if (favs.length > 0)
+            if (favs?.length > 0)
                 localStorage.setItem('favs', JSON.stringify(favs));
     }, [favs]);
 
