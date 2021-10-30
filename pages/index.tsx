@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../components/Header";
-import News from "../components/news/News";
+import Board from "../components/news/Board";
 
 const Index = () => {
   return (
     <>
       <Header title="Hacker News" />
 
-      <News />
+      <Board />
     </>
   );
 };

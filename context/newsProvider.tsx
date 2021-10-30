@@ -7,6 +7,7 @@ const initState: NewsContextType = {
     favs: [] as Hit[],
     saveNews: () => { },
     addFav: () => { },
+    addFavs: () => { },
     removeFav: () => { },
 };
 
@@ -18,6 +19,8 @@ const NewsProvider = ({ children }: { children: ReactNode }) => {
 
     const saveNews = (data: New) => setNews(data);
 
+    const addFavs = (favs: Hit[]) => setFavs(favs);
+
     const addFav = (fav: Hit) => setFavs([...favs, fav]);
 
     const removeFav = (id: string) => setFavs([...favs.filter(h => h.objectID !== id)]);
@@ -28,6 +31,7 @@ const NewsProvider = ({ children }: { children: ReactNode }) => {
             favs,
             saveNews,
             addFav,
+            addFavs,
             removeFav,
         }} >
             {children}

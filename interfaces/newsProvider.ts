@@ -5,5 +5,6 @@ export type NewsContextType = {
     favs: Hit[];
     saveNews: (data: New) => void,
     addFav: (fav: Hit) => void,
+    addFavs: (favs: Hit[]) => void,
     removeFav: (id: string) => void,
 };
