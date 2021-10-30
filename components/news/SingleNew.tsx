@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { Hit } from "../../interfaces/news";
+import { Hit } from '@/interfaces/news';
 import SingleNewContent from './SingleNewContent';
 
 interface Props {

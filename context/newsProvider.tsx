@@ -1,10 +1,10 @@
 import { createContext, ReactNode, useState } from "react";
-import { NewsContextType } from "../interfaces/newsProvider";
-import { New } from "../interfaces/news";
+import { New } from "@/interfaces/news";
+import { NewsContextType } from "@/interfaces/newsProvider";
 
 const initState: NewsContextType = {
     news: {} as New,
-    saveNews: () => {},
+    saveNews: () => { },
 };
 
 export const NewsContext = createContext<NewsContextType>(initState);

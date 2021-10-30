@@ -1,7 +1,7 @@
 import React from "react"
 import { ClockIcon, HeartIcon } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/outline';
-import { calcTime } from "../../helpers/helpers";
+import { calcTime } from "@/helpers/helpers";
 
 interface Props {
     author: string,

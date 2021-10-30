@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import { api } from "../helpers/fetchHelper";
-import { New } from "../interfaces/news";
-import { NewsContext } from "../context/newsProvider";
+import { NewsContext } from "@/context/newsProvider";
+import { api } from "@/helpers/fetchHelper";
+import { New } from "@/interfaces/news";
 
 interface Props {
     query: string,

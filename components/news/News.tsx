@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import useNews from "../../hooks/useNews";
-import { Category, IGenericComponent } from "../../interfaces/data";
-import Empty from "../general/Empty";
+import { Category, IGenericComponent } from "@/interfaces/data";
 import SingleNew from "./SingleNew";
+import Empty from "../general/Empty";
+import useNews from "@/hooks/useNews";
 
 const tabs: IGenericComponent[] = [
   { id: '122b0f6e-4dec-4d19-9c4a-7cfb145c0444', label: "All" },
@@ -33,10 +33,7 @@ const News = () => {
   const [tab, setTab] = useState(tabs[0].id);
   const { hits } = news;
 
-  const getTab = (id: string) => {
-    if (id === tab)
-      return "border-blue-700 text-blue-700 first:border-r";
-  }
+  const getTab = (id: string) => (id === tab) ? "border-blue-700 text-blue-700 first:border-r" : '';
 
   return (
     <div className="flex flex-col p-8">
