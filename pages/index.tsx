@@ -1,10 +1,16 @@
 import React from "react";
+import Head from "next/head";
 import Header from "../components/Header";
 import Board from "../components/news/Board";
 
 const Index = () => {
   return (
     <>
+      <Head>
+        <title>News App</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
       <Header title="Hacker News" />
 
       <Board />
