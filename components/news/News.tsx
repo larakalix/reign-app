@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import useNews from "@/hooks/useNews";
 import { Category, IGenericComponent } from "@/interfaces/data";
 import SingleNew from "./SingleNew";
 import Empty from "../general/Empty";
-import useNews from "@/hooks/useNews";
 
 const tabs: IGenericComponent[] = [
   { id: '122b0f6e-4dec-4d19-9c4a-7cfb145c0444', label: "All" },
@@ -40,14 +40,21 @@ const News = () => {
       <div className="flex items-center justify-center mt-4">
         <ul className="inline-flex">
           {tabs.map(({ id, label }) => (
-            <li key={id} className={`p-2 w-24 rounded-sm text-center border text-xs font-semibold first:border-r-0 hover:cursor-pointer ${getTab(id)}`} onClick={() => setTab(id)}>{label}</li>
+            <li
+              key={id}
+              className={
+                `p-2 w-24 rounded-sm text-center border text-xs font-semibold first:border-r-0 hover:cursor-pointer ${getTab(id)}`}
+              onClick={() => setTab(id)}
+            >
+              {label}
+            </li>
           ))}
         </ul>
       </div>
       {
         hits?.length > 0 ?
           (
-            <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
               {
                 hits.map((hit) => (
                   <SingleNew key={hit.objectID} hit={hit} />
