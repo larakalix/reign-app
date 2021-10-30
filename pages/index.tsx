@@ -1,9 +1,17 @@
+import React from "react";
+import Header from "../components/header";
+import News from "../components/news/news";
+
 const Index = () => {
   return (
-    <div className="flex">
-      <h1 className="text-sm m-3 p-0">News App</h1>
-    </div>
-  )
-}
+    <>
+      <Header title="Hacker News" />
 
-export default Index
+      <div className="flex justify-center p-4">
+        <News />
+      </div>
+    </>
+  );
+};
+
+export default Index;
