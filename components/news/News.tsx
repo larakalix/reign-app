@@ -1,9 +1,15 @@
 import React from "react";
-import useNews from "@/hooks/useNews";
 import Empty from "../general/Empty";
 import SingleNew from "./SingleNew";
+import { New } from "@/interfaces/news";
+import useNews from "@/hooks/useNews";
+
+interface Props {
+    news: New;
+}
 
 const News = () => {
+    
     const { news } = useNews();
     const { hits } = news;
 

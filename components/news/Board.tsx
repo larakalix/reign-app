@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Category, Tab, TabPanel } from "@/interfaces/data";
 import News from "./News";
 import Favs from "./Favs";
+import useNews from "@/hooks/useNews";
 
 const tabs: Tab[] = [
   { id: '122b0f6e-4dec-4d19-9c4a-7cfb145c0444', label: "All", panel: TabPanel.News },
@@ -54,6 +55,9 @@ const Board = () => {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="flex items-center justify-center mt-4">
+        {/* Dropwodn List */}
       </div>
       <>
         {renderNews()}

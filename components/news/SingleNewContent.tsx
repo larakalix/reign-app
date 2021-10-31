@@ -3,7 +3,7 @@ import { ClockIcon, HeartIcon } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/solid';
 import { Hit } from '@/interfaces/news';
 import { calcTime } from "@/helpers/helpers";
-import useNews from "@/hooks/useNews";
+import useFavs from "@/hooks/useFavs";
 
 interface Props {
     hit: Hit;
@@ -11,7 +11,7 @@ interface Props {
 
 const SingleNewContent = ({ hit }: Props) => {
 
-    const { favs, addFav, removeFavHit } = useNews();
+    const { favs, addFav, removeFavHit } = useFavs();
     const { objectID, author, created_at, story_title } = hit;
     const [state, setState] = useState(favs.filter(h => h.objectID === objectID).length);
 

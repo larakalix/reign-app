@@ -1,10 +1,17 @@
+import useFavs from "@/hooks/useFavs";
 import useNews from "@/hooks/useNews";
+import { Hit } from "@/interfaces/news";
 import React from "react";
 import Empty from "../general/Empty";
 import SingleNew from "./SingleNew";
 
+interface Props {
+    favs: Hit[];
+}
+
 const Favs = () => {
-    const { favs } = useNews();
+
+    const { favs } = useFavs();
 
     return (
         <>
