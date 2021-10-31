@@ -1,8 +1,10 @@
 import { Hit, New } from "./news";
 
 export type NewsContextType = {
-    news: New;
-    favs: Hit[];
+    loading: boolean,
+    news: New,
+    favs: Hit[],
+    isLoading: (state: boolean) => void,
     saveNews: (data: New) => void,
     addFav: (fav: Hit) => void,
     addFavs: (favs: Hit[]) => void,

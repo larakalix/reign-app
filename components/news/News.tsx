@@ -3,18 +3,53 @@ import Empty from "../general/Empty";
 import SingleNew from "./SingleNew";
 import { New } from "@/interfaces/news";
 import useNews from "@/hooks/useNews";
+import { Category } from "@/interfaces/data";
+
+const categories: Category[] = [
+    {
+        id: '122b0f6e-4dec-4d19-9c4a-7cfb145c06f0',
+        label: 'Angular',
+        icon: null,
+    },
+    {
+        id: '9f4e5830-8c65-48f4-b539-f8ca7ced700d',
+        label: 'Reactjs',
+        icon: null,
+    },
+    {
+        id: 'acd7c901-8292-41ae-80e8-8c158a309988',
+        label: 'Vuejs',
+        icon: null,
+    },
+];
 
 interface Props {
     news: New;
 }
 
 const News = () => {
-    
-    const { news } = useNews();
+
+    const { loading, news, getNews } = useNews();
     const { hits } = news;
+
+    const filterNews = (value: string) => {
+        getNews({ query: value.toLowerCase(), page: 0 });
+    }
+
+    if (loading)
+        return (<Empty state="loading" message="Fetching data" />)
 
     return (
         <>
+            <div>
+                <ul>
+                    {
+                        categories.map(({ id, label }) => (
+                            <li key={id} className="hover:cursor-pointer" onClick={() => filterNews(label)}> {label}</li>
+                        ))
+                    }
+                </ul>
+            </div>
             {
                 hits?.length > 0 ?
                     (
@@ -26,7 +61,7 @@ const News = () => {
                             }
                         </div>
                     )
-                    : <Empty message="No news found" />
+                    : <Empty state="error" message="No news found" />
             }
         </>
     )
