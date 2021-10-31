@@ -1,6 +1,6 @@
+import React from "react";
 import useFavs from "@/hooks/useFavs";
 import { Hit } from "@/interfaces/news";
-import React from "react";
 import Empty from "../general/Empty";
 import SingleNew from "../news/SingleNew";
 

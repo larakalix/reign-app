@@ -26,7 +26,14 @@ const NewsProvider = ({ children }: { children: ReactNode }) => {
 
     const addFav = (fav: Hit) => setFavs([...favs, fav]);
 
-    const removeFav = (id: string) => setFavs([...favs.filter(h => h.objectID !== id)]);
+    const removeFav = (id: string) => {
+
+        const index: number = favs.indexOf(favs.filter(h => h.objectID === id)[0]);
+        if (index > -1)
+            favs.splice(index, 1);
+
+        setFavs([...favs])
+    };
 
     const isLoading = (state: boolean) => setLoading(state);
 
