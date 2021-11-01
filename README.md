@@ -17,35 +17,35 @@ Clone down this repository. You will need `node` and `npm/yarn` installed global
 Installation:
 
 ```bash
-`yarn install`
+yarn install
 ```
 or 
 ```bash
-`npm i`
+npm i
 ```
 
 To Run Test Suite:  
 
 ```bash
-`yarn run e2e`
+yarn run e2e
 ```
 or 
 ```bash
-`npm run e2e`
+npm run e2e
 ```
 
 To Start Server:
 
 ```bash
-`yarn dev`
+yarn dev
 ```
 or 
 ```bash
-`npm run dev`
+npm run dev
 ```
 
 To Visit App to see the result:
 
 ```bash
-`localhost:3000/`
+localhost:3000
 ```
