@@ -24,7 +24,7 @@ const Board = () => {
   }
 
   return (
-    <div className="flex flex-col p-8 m-auto m md:max-w-5xl lg:max-w-7xl">
+    <div className="flex flex-col p-8 m-auto md:max-w-5xl lg:max-w-7xl">
       <div className="flex items-center justify-center mt-4">
         <ul className="tabs inline-flex">
           {tabs.map(({ id, label, panel }) => (
