@@ -16,7 +16,9 @@ const useNews = () => {
 
     // Retreive data from API
     const getNews = async ({ query, page, perPage, concat = false }: Props) => {
-        isLoading(true);
+        if (!concat)
+            isLoading(true);
+        
         await api
             .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}&hitsPerPage=${(perPage) ? perPage : 20}`)
             .then((response) => {

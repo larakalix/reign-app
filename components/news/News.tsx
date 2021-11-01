@@ -34,7 +34,8 @@ const News = () => {
                                     dataLength={hits.length}
                                     next={() => { getNews({ query: selected.toLowerCase(), page: page + 1, concat: true }) }}
                                     hasMore={nbPages > 0}
-                                    loader={<Empty state="loading" message="Fetching data" />}
+                                    loader={null}
+                                    // loader={<Empty state="loading" message="Fetching data" />}
                                     endMessage={<Empty state="success" message="Nothing more news for today" />}
                                 >
                                     <Grid>
