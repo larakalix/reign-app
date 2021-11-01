@@ -37,8 +37,8 @@ const SingleNewContent = ({ hit }: Props) => {
                 onClick={(e) => addFave(e, hit)}>
                 {
                     (favs.filter(h => h.objectID === objectID).length === 1)
-                        ? <HeartIconOutline className="h-6 w-5 text-red-600" />
-                        : <HeartIcon className="h-6 w-5 text-red-600" />
+                        ? <HeartIconOutline className="h-9 w-10 md:h-7 md:w-8 text-red-600" />
+                        : <HeartIcon className="h-9 w-10 md:h-7 md:w-8 text-red-600" />
                 }
             </button>
         </>
