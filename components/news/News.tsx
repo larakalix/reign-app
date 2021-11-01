@@ -5,12 +5,13 @@ import useNews from "@/hooks/useNews";
 import SingleNew from "./SingleNew";
 import CategoryDropdown from "./CategoryDropdown";
 import Grid from "../general/Grid";
+import { ChevronDownIcon } from "@heroicons/react/outline";
 
 const News = () => {
 
-    const { loading, hits, news, getNews } = useNews();
     // const { hits } = news;
-    const [selected, setSelected] = useState('Reactjs');
+    const [selected, setSelected] = useState('reactjs');
+    const { loading, hits, news, getNews } = useNews();
     const { page, nbPages } = news;
 
     // Retreive news from API depending to selected cagetory, and set selected dropdown item
@@ -19,6 +20,13 @@ const News = () => {
         getNews({ query: value.toLowerCase(), page: 0 });
     }
 
+    useEffect(() => {
+        const filter = localStorage.getItem('filter');
+        if (filter)
+            setSelected(filter);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <div id="news">
             <div className="flex flex-col space-y-4 md:flex-row items-center justify-between mt-8">
@@ -26,7 +34,7 @@ const News = () => {
                 <p className="text-sm">Category: <span className="text-blue-500 font-semibold">{selected}</span></p>
             </div>
             {
-                loading ? <Empty state="loading" message="Fetching data"><></></Empty> :
+                loading ? <Empty state="loading" message="Fetching data" /> :
                     (
                         hits?.length > 0 ?
                             (
@@ -35,7 +43,7 @@ const News = () => {
                                     next={() => { getNews({ query: selected.toLowerCase(), page: page + 1, concat: true }) }}
                                     hasMore={nbPages > 0}
                                     loader={null}
-                                    endMessage={<Empty state="success" message="No more news for today (:"><></></Empty>}
+                                    endMessage={<Empty state="success" message="No more news for today (:" />}
                                 >
                                     <Grid>
                                         {
@@ -46,15 +54,18 @@ const News = () => {
                                     </Grid>
                                 </InfiniteScroll>
                             )
-                            : <Empty state="error" message="No news found"><></></Empty>
+                            : <Empty state="error" message="No news found" />
                     )
             }
             {
-                !loading && hits?.length <= 8
+                !loading && hits?.length > 0 && hits?.length <= 8
                     ? (
-                        <Empty state="loading" message="Not enough data">
-                            <button className="bg-blue-600 text-white p-2 rounded-md mt-4" onClick={() => getNews({ query: selected.toLowerCase(), perPage: 150, page })}>Retreive more data</button>
-                        </Empty>
+                        <div className="flex flex-col justify-center items-center">
+                            <button className="flex flex-col justify-center items-center text-blue-600 font-medium p-2 rounded-md mt-4" onClick={() => getNews({ query: selected.toLowerCase(), perPage: 50, page })}>
+                                <span>Get more</span>
+                                <ChevronDownIcon className="w-6 h-6 text-blue-600" />
+                            </button>
+                        </div>
                     ) : null
             }
         </div>

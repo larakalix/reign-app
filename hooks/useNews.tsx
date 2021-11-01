@@ -27,7 +27,7 @@ const useNews = () => {
                     .data
                     .hits
                     .filter(h => h.author !== null && h.story_title !== null && h.story_url !== null && h.created_at !== null);
-                    
+
                 concat
                     ? addHits([...hits, ...data])
                     : addHits(data);
@@ -37,8 +37,9 @@ const useNews = () => {
     }
 
     useEffect(() => {
+        const filter = localStorage.getItem('filter');
         if (Object.keys(news).length === 0)
-            getNews({ query: 'reactjs', page: 0 });
+            getNews({ query: filter ? filter : 'reactjs', page: 0 });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

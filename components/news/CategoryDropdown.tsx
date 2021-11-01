@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { categories } from "data/data-categories";
@@ -15,6 +15,7 @@ const CategoryDropdown = ({ selected, setSelected }: Props) => {
     const selectedCategory = (label: string) => {
         setSelected(label);
         setShow(false);
+        localStorage.setItem('filter', label);
     }
 
     return (
