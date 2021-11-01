@@ -20,12 +20,11 @@ const useNews = () => {
             isLoading(true);
 
         await api
-            .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}&hitsPerPage=${(perPage) ? perPage : 10}`)
+            .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}&hitsPerPage=${(perPage) ? perPage : 50}`)
             .then((response) => {
+                console.log('data', response.data)
                 saveNews(response.data as New)
-                const data = response
-                    .data
-                    .hits
+                const data = response.data.hits
                     .filter(h => h.author !== null && h.story_title !== null && h.story_url !== null && h.created_at !== null);
 
                 concat
@@ -39,7 +38,7 @@ const useNews = () => {
     useEffect(() => {
         const filter = localStorage.getItem('filter');
         if (Object.keys(news).length === 0)
-            getNews({ query: filter ? filter : 'reactjs', page: 0 });
+            getNews({ query: filter ? filter : 'vuejs', page: 0 });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

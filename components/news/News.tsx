@@ -10,9 +10,9 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 const News = () => {
 
     // const { hits } = news;
-    const [selected, setSelected] = useState('reactjs');
+    const [selected, setSelected] = useState('vuejs');
     const { loading, hits, news, getNews } = useNews();
-    const { page, nbPages } = news;
+    const { page, hitsPerPage, nbPages } = news;
 
     // Retreive news from API depending to selected cagetory, and set selected dropdown item
     const filterNews = (value: string) => {
@@ -40,7 +40,14 @@ const News = () => {
                             (
                                 <InfiniteScroll
                                     dataLength={hits.length}
-                                    next={() => { getNews({ query: selected.toLowerCase(), page: page + 1, concat: true }) }}
+                                    next={() => {
+                                        getNews({
+                                            query: selected.toLowerCase(),
+                                            page: page + 1,
+                                            perPage: hitsPerPage,
+                                            concat: true
+                                        })
+                                    }}
                                     hasMore={nbPages > 0}
                                     loader={null}
                                     endMessage={<Empty state="success" message="No more news for today (:" />}
@@ -58,11 +65,13 @@ const News = () => {
                     )
             }
             {
-                !loading && hits?.length > 0 && hits?.length <= 8
+                !loading && hits?.length > 0 && hits?.length <= 10
                     ? (
-                        <div className="flex flex-col justify-center items-center">
-                            <button className="flex flex-col justify-center items-center text-blue-600 font-medium p-2 rounded-md mt-4" onClick={() => getNews({ query: selected.toLowerCase(), perPage: 50, page })}>
-                                <span>Get more</span>
+                        <div className="hidden md:flex flex-col justify-center items-center mt-4">
+                            <button
+                                className="flex flex-col justify-center items-center text-blue-600 font-medium p-2 rounded-md mt-4 animate-bounce"
+                                onClick={() => getNews({ query: selected.toLowerCase(), perPage: hitsPerPage + 200, page: page + 1, concat: true })}>
+                                {/* <span>Get more</span> */}
                                 <ChevronDownIcon className="w-6 h-6 text-blue-600" />
                             </button>
                         </div>

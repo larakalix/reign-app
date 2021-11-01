@@ -26,3 +26,6 @@ export const calcTime = ({ date }: { date: string }): string => {
 
     return difference;
 }
+
+export const cleanUrl = (url: string) => 
+    url.replace(/([^:]\/)\/+/g, "$1");

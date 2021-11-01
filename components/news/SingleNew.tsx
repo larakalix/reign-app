@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { Hit } from '@/interfaces/news';
 import SingleNewContent from './SingleNewContent';
+import { cleanUrl } from '@/helpers/helpers';
 
 interface Props {
   hit: Hit;
@@ -17,7 +18,7 @@ const SingleNew = ({ hit }: Props) => {
     // Validate if story_url or url are not empty, but...
     (story_url || url)
       ? (
-        <Link href={story_url ? story_url! : url!}>
+        <Link href={story_url ? cleanUrl(story_url) : cleanUrl(url!)} >
           <a target="_blank" className={`${classRef.current} hover:cursor-pointer`}>
             <SingleNewContent key={objectID} {...{ hit }} />
           </a>
