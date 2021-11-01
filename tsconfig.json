@@ -19,7 +19,7 @@
       "@/context/*": ["./context/*"],
       "@/helpers/*": ["./helpers/*"],
       "@/hooks/*": ["./hooks/*"],
-      "@/interfaces/*": ["./interfaces/*"]
+      "@/interfaces/*": ["./interfaces/*"],
     },
     "incremental": true
   },

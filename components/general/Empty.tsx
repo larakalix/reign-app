@@ -5,6 +5,7 @@ interface Props {
 
 const Empty = ({ message, state }: Props) => {
 
+    // Define empty box message style depending on state style property
     const getState = (style: string) => {
         switch (style) {
             case 'loading': return 'text-blue-600 border-blue-200';

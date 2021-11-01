@@ -12,8 +12,10 @@ const Board = () => {
 
   const [tab, setTab] = useState(tabs[0]);
 
-  const getTab = (id: string) => (id === tab.id) ? "border-blue-700 text-blue-700 first:border-r" : '';
+  // Add active styles to selected tab
+  const getTab = (id: string) => (id === tab.id) ? "border-blue-500 text-blue-500 first:border-r" : '';
 
+  // Show news of favs news depending to selected tab
   const renderNews = () => {
     switch (tab.panel) {
       case TabPanel.Favs: return <Favs />;
@@ -29,16 +31,13 @@ const Board = () => {
             <li
               key={id}
               className={
-                `p-2 w-24 rounded-sm text-center border text-xs font-semibold first:border-r-0 hover:cursor-pointer ${getTab(id)}`}
+                `px-10 py-1 md:py-1.5 lg:py-2 md rounded-sm text-center border text-xs font-semibold first:border-r-0 hover:cursor-pointer ${getTab(id)}`}
               onClick={() => setTab({ id, label, panel })}
             >
               {label}
             </li>
           ))}
         </ul>
-      </div>
-      <div className="flex items-center justify-center mt-4">
-        {/* Dropwodn List */}
       </div>
       <>
         {renderNews()}

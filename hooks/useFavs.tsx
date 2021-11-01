@@ -5,6 +5,7 @@ const useFavs = () => {
 
     const { favs, addFav, addFavs, removeFav } = useContext(NewsContext);
 
+    // Remove hit from favorite hits
     const removeFavHit = (id: string) => {
         removeFav(id);
         localStorage.setItem('favs', JSON.stringify(favs));

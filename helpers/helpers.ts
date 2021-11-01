@@ -1,3 +1,4 @@
+// CalcTime helper function, to define the date in parts
 export const calcTime = ({ date }: { date: string }): string => {
     const past: any = new Date(date);
     const now: any = new Date();

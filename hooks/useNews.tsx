@@ -13,6 +13,7 @@ const useNews = () => {
 
     const { loading, news, hits, addHits, saveNews, isLoading } = useContext(NewsContext);
 
+    // Retreive data from API
     const getNews = async ({ query, page, perPage }: Props) => {
         isLoading(true);
         await api
