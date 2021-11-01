@@ -14,7 +14,7 @@ const Favs = () => {
     const { favs } = useFavs();
 
     return (
-        <>
+        <div id="favs">
             {
                 favs?.length > 0 ?
                     (
@@ -28,7 +28,7 @@ const Favs = () => {
                     )
                     : <Empty state="error" message="No faves found" />
             }
-        </>
+        </div>
     )
 }
 

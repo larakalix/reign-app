@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 
-// describe('Navigation', () => {
-//     it('should navigate to the about page', () => {
-//       cy.visit('http://localhost:3000')
-  
-//       cy.get('h1').contains('Hacker News')
-//     })
-//   })
+context("Home Page", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000/");
+  });
+
+  it("Should find our welcome page and message", () => {
+    cy.get("h1").contains("Hacker News");
+  });
+});

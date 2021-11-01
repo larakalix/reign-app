@@ -20,7 +20,7 @@ const News = () => {
     }
 
     return (
-        <>
+        <div id="news">
             <div className="flex items-center justify-between mt-4">
                 <CategoryDropdown selected={selected} setSelected={filterNews} />
                 <p className="text-sm">Category: <span className="text-blue-500 font-semibold">{selected}</span></p>
@@ -49,7 +49,7 @@ const News = () => {
                             : <Empty state="error" message="No news found" />
                     )
             }
-        </>
+        </div>
     )
 }
 

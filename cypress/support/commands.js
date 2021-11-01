@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('fetchNews', ({
+    query,
+    page,
+    hitsPerPage
+}) => {
+    cy.request("GET", `https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=${page}&hitsPerPage=${hitsPerPage}`)
+        .then(response => {
+            console.log('test log', response.body)
+            localStorage.setItem('test news', response.body);
+            cy.visit("http://localhost:3000/");
+        });
+});

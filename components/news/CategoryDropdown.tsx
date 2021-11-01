@@ -20,6 +20,7 @@ const CategoryDropdown = ({ selected, setSelected }: Props) => {
     return (
         <div className="relative">
             <button
+                id="category-dp"
                 className={`flex items-center justify-between transition-colors border 
                     ${show ? 'border-gray-900' : 'border-gray-300'} py-1 px-4 bg-white w-48 rounded-sm`}
                 onClick={() => setShow(!show)}
@@ -28,7 +29,7 @@ const CategoryDropdown = ({ selected, setSelected }: Props) => {
                 <ChevronDownIcon className="mx-2 w-3 h-3" />
             </button>
 
-            <div className={`${show ? '' : 'hidden'} absolute z-50 left-0 w-48 py-2 mt-2 bg-white border border-gray-300 rounded-sm shadow-xl`}>
+            <div className={`categories ${show ? '' : 'hidden'} absolute z-50 left-0 w-48 py-2 mt-2 bg-white border border-gray-300 rounded-sm shadow-xl`}>
                 {
                     categories.map(({ id, label }) => (
                         <a

@@ -4,7 +4,7 @@ export interface IGenericComponent {
 }
 
 export interface Category extends IGenericComponent {
-    icon: string | null;
+    icon?: string | null;
 }
 
 export interface Tab extends IGenericComponent {
