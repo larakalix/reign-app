@@ -1,9 +1,12 @@
+import { ReactNode } from "react";
+
 interface Props {
     message: string;
-    state: | 'loading' | 'error' | 'success'
+    state: | 'loading' | 'error' | 'success',
+    children?: ReactNode;
 }
 
-const Empty = ({ message, state }: Props) => {
+const Empty = ({ children, message, state }: Props) => {
 
     // Define empty box message style depending on state style property
     const getState = (style: string) => {
@@ -18,9 +21,10 @@ const Empty = ({ message, state }: Props) => {
 
     return (
         <div className="flex justify-center items-center my-10">
-            <div className={`flex justify-center items-center h-60 w-4/5 md:w-3/4 bg-white border-2
+            <div className={`flex flex-col justify-center items-center h-60 w-4/5 md:w-3/4 bg-white border-2
                 ${getState(state)} font-semibold rounded-md`}>
                 <p>{message}</p>
+                {children}
             </div>
         </div>
     )

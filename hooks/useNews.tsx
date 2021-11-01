@@ -18,16 +18,20 @@ const useNews = () => {
     const getNews = async ({ query, page, perPage, concat = false }: Props) => {
         if (!concat)
             isLoading(true);
-        
+
         await api
-            .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}&hitsPerPage=${(perPage) ? perPage : 20}`)
+            .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}&hitsPerPage=${(perPage) ? perPage : 10}`)
             .then((response) => {
-                console.log('response', response.data)
                 saveNews(response.data as New)
-                concat
-                    ? addHits([...hits, ...response.data.hits])
-                    : addHits(response.data.hits);
+                const data = response
+                    .data
+                    .hits
+                    .filter(h => h.author !== null && h.story_title !== null && h.story_url !== null && h.created_at !== null);
                     
+                concat
+                    ? addHits([...hits, ...data])
+                    : addHits(data);
+
                 isLoading(false);
             });
     }

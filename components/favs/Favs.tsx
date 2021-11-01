@@ -26,7 +26,7 @@ const Favs = () => {
                             }
                         </Grid>
                     )
-                    : <Empty state="error" message="No faves found" />
+                    : <Empty state="error" message="No faves found"><></></Empty>
             }
         </div>
     )

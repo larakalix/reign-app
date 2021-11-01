@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Empty from "../general/Empty";
 import useNews from "@/hooks/useNews";
@@ -26,7 +26,7 @@ const News = () => {
                 <p className="text-sm">Category: <span className="text-blue-500 font-semibold">{selected}</span></p>
             </div>
             {
-                loading ? <Empty state="loading" message="Fetching data" /> :
+                loading ? <Empty state="loading" message="Fetching data"><></></Empty> :
                     (
                         hits?.length > 0 ?
                             (
@@ -35,7 +35,7 @@ const News = () => {
                                     next={() => { getNews({ query: selected.toLowerCase(), page: page + 1, concat: true }) }}
                                     hasMore={nbPages > 0}
                                     loader={null}
-                                    endMessage={<Empty state="success" message="Nothing more news for today" />}
+                                    endMessage={<Empty state="success" message="No more news for today (:"><></></Empty>}
                                 >
                                     <Grid>
                                         {
@@ -46,8 +46,16 @@ const News = () => {
                                     </Grid>
                                 </InfiniteScroll>
                             )
-                            : <Empty state="error" message="No news found" />
+                            : <Empty state="error" message="No news found"><></></Empty>
                     )
+            }
+            {
+                !loading && hits?.length <= 8
+                    ? (
+                        <Empty state="loading" message="Not enough data">
+                            <button className="bg-blue-600 text-white p-2 rounded-md mt-4" onClick={() => getNews({ query: selected.toLowerCase(), perPage: 150, page })}>Retreive more data</button>
+                        </Empty>
+                    ) : null
             }
         </div>
     )
