@@ -21,7 +21,7 @@ const News = () => {
 
     return (
         <div id="news">
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex flex-col space-y-4 md:flex-row items-center justify-between mt-4">
                 <CategoryDropdown selected={selected} setSelected={filterNews} />
                 <p className="text-sm">Category: <span className="text-blue-500 font-semibold">{selected}</span></p>
             </div>
