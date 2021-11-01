@@ -38,12 +38,12 @@ const CategoryDropdown = ({ selected, setSelected }: Props) => {
                                 ${selected === label ? 'text-blue-500 font-medium' : 'text-gray-600'} hover:text-gray-800`}
                             onClick={() => selectedCategory(label)}
                         >
-                            <p className="flex items-center">
+                            <div className="flex items-center">
                                 <div className="w-6 h-6 flex justify-center items-center">
-                                    <Image src={`/images/${label}.png`} width={24} height={24} objectFit="contain" alt={label} />
+                                    <Image src={`/images/${label}.png`} width={24} height={24} objectFit="contain" loading="lazy" alt={label} />
                                 </div>
-                                <span className="ml-2">{label}</span>
-                            </p>
+                                <p className="ml-2">{label}</p>
+                            </div>
                         </a>
                     ))
                 }

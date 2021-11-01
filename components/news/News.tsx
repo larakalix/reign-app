@@ -9,6 +9,7 @@ import Grid from "../general/Grid";
 const News = () => {
 
     const { loading, hits, news, getNews } = useNews();
+    // const { hits } = news;
     const [selected, setSelected] = useState('Reactjs');
     const { page, nbPages } = news;
 
@@ -31,7 +32,7 @@ const News = () => {
                             (
                                 <InfiniteScroll
                                     dataLength={hits.length}
-                                    next={() => { getNews({ query: selected.toLowerCase(), page: page + 1 }) }}
+                                    next={() => { getNews({ query: selected.toLowerCase(), page: page + 1, concat: true }) }}
                                     hasMore={nbPages > 0}
                                     loader={<Empty state="loading" message="Fetching data" />}
                                     endMessage={<Empty state="success" message="Nothing more news for today" />}

@@ -12,7 +12,7 @@ interface Props {
 const SingleNewContent = ({ hit }: Props) => {
 
     const { favs, addFav, removeFavHit } = useFavs();
-    const { objectID, author, created_at, story_title } = hit;
+    const { objectID, author, created_at, story_title, title } = hit;
 
     // Add a new in favorite items, or remove from there 
     const addFave = (e: any, hit: Hit) => {
@@ -31,7 +31,7 @@ const SingleNewContent = ({ hit }: Props) => {
                     {calcTime({ date: created_at })} ago by {author}
                 </span>
             </p>
-            <p className="text-sm text-gray-500 w-3/4 font-semibold" dangerouslySetInnerHTML={{ __html: story_title! }} />
+            <p className="text-sm text-gray-500 w-3/4 font-semibold" dangerouslySetInnerHTML={{ __html: (story_title ? story_title! : title!) }} />
             <button
                 className="absolute z-50 flex justify-center items-center h-full w-1/5 bg-gray-100 top-0 right-0"
                 onClick={(e) => addFave(e, hit)}>
