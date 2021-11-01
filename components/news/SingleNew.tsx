@@ -11,7 +11,7 @@ const SingleNew = ({ hit }: Props) => {
 
   const { objectID, story_url, url } = hit;
 
-  const classRef = useRef("hit-row relative z-20 flex flex-col items-start w-full p-6 border-2 border-gray-400 rounded-md overflow-hidden opacity-100 transition-opacity hover:opacity-70");
+  const classRef = useRef("hit-row relative z-20 flex flex-col items-start w-full md:max-h-36 lg:max-h-24 p-6 border-2 border-gray-400 rounded-md overflow-hidden opacity-100 transition-opacity hover:opacity-70");
 
   return (
     // Validate if story_url or url are not empty, but...

@@ -1,4 +1,7 @@
-/* ./styles/globals.css */
+:root {
+    --color-bg-gray: #fcfcfc;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

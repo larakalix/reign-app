@@ -5,7 +5,7 @@ import Board from "../components/Board";
 
 const Index = () => {
   return (
-    <>
+    <div className="bg-gray-50">
       <Head>
         <title>News App</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -14,7 +14,7 @@ const Index = () => {
       <Header title="Hacker News" />
 
       <Board />
-    </>
+    </div>
   );
 };
 

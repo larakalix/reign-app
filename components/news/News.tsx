@@ -21,7 +21,7 @@ const News = () => {
 
     return (
         <div id="news">
-            <div className="flex flex-col space-y-4 md:flex-row items-center justify-between mt-4">
+            <div className="flex flex-col space-y-4 md:flex-row items-center justify-between mt-8">
                 <CategoryDropdown selected={selected} setSelected={filterNews} />
                 <p className="text-sm">Category: <span className="text-blue-500 font-semibold">{selected}</span></p>
             </div>
@@ -35,7 +35,6 @@ const News = () => {
                                     next={() => { getNews({ query: selected.toLowerCase(), page: page + 1, concat: true }) }}
                                     hasMore={nbPages > 0}
                                     loader={null}
-                                    // loader={<Empty state="loading" message="Fetching data" />}
                                     endMessage={<Empty state="success" message="Nothing more news for today" />}
                                 >
                                     <Grid>

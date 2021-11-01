@@ -31,14 +31,16 @@ const SingleNewContent = ({ hit }: Props) => {
                     {calcTime({ date: created_at })} ago by {author}
                 </span>
             </p>
-            <p className="text-sm text-gray-500 w-3/4 font-semibold" dangerouslySetInnerHTML={{ __html: (story_title ? story_title! : title!) }} />
+            <p
+                className="text-sm text-gray-500 w-3/4 font-semibold"
+                dangerouslySetInnerHTML={{ __html: (story_title ? story_title! : title!) }} />
             <button
-                className="absolute z-50 flex justify-center items-center h-full w-1/5 bg-gray-100 top-0 right-0"
+                className="absolute z-50 flex justify-center items-center h-full w-16 bg-gray-100 top-0 right-0"
                 onClick={(e) => addFave(e, hit)}>
                 {
                     (favs.filter(h => h.objectID === objectID).length === 1)
-                        ? <HeartIconOutline className="h-9 w-10 md:h-7 md:w-8 text-red-600" />
-                        : <HeartIcon className="h-9 w-10 md:h-7 md:w-8 text-red-600" />
+                        ? <HeartIconOutline className="h-6 w-6 text-red-600" />
+                        : <HeartIcon className="h-6 w-6 text-red-600" />
                 }
             </button>
         </>

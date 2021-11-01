@@ -13,7 +13,7 @@ const Board = () => {
   const [tab, setTab] = useState(tabs[0]);
 
   // Add active styles to selected tab
-  const getTab = (id: string) => (id === tab.id) ? "border-blue-500 text-blue-500 first:border-r" : '';
+  const getTab = (id: string) => (id === tab.id) ? "border-blue-600 text-blue-600 first:border-r" : '';
 
   // Show news of favs news depending to selected tab
   const renderNews = () => {
@@ -24,7 +24,7 @@ const Board = () => {
   }
 
   return (
-    <div className="flex flex-col p-8">
+    <div className="flex flex-col p-8 m-auto m md:max-w-5xl lg:max-w-7xl">
       <div className="flex items-center justify-center mt-4">
         <ul className="tabs inline-flex">
           {tabs.map(({ id, label, panel }) => (
