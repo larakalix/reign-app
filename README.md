@@ -14,32 +14,46 @@ This project purpose is merely for testing.
 
 Clone down this repository. You will need `node` and `npm/yarn` installed globally on your machine.  
 
-Installation:
+### Installation:
 
+## with yarn:
+
+Install project dependencies
 ```bash
 yarn install
 ```
-or 
-```bash
-npm i
-```
 
 To Run Test Suite:  
-
 ```bash
 yarn run e2e
 ```
-or 
+
+To Start Server:
+```bash
+yarn dev
+```
+
+To Visit App to see the result:
+
+```bash
+localhost:3000
+```
+
+---
+
+## with npm:
+
+Install project dependencies
+```bash
+npm install
+```
+
+To Run Test Suite:  
 ```bash
 npm run e2e
 ```
 
 To Start Server:
-
-```bash
-yarn dev
-```
-or 
 ```bash
 npm run dev
 ```
