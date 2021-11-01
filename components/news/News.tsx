@@ -37,7 +37,7 @@ const News = () => {
                                     <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
                                         {
                                             hits.map((hit, index) => (
-                                                <SingleNew key={`${hit.objectID}${index}`} hit={hit} index={index} />
+                                                <SingleNew key={`${hit.objectID}${index}`} hit={hit} />
                                             ))
                                         }
                                     </div>
