@@ -6,19 +6,21 @@ import { New } from "@/interfaces/news";
 interface Props {
     query: string,
     page: number,
+    perPage?: number | null;
 }
 
 const useNews = () => {
 
-    const { loading, news, saveNews, isLoading } = useContext(NewsContext);
+    const { loading, news, hits, addHits, saveNews, isLoading } = useContext(NewsContext);
 
-    const getNews = async ({ query, page }: Props) => {
+    const getNews = async ({ query, page, perPage }: Props) => {
         isLoading(true);
         await api
-            .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}`)
+            .get<New>(`${process.env.NEXT_APP_BASE_URL}=${query}&page=${page}&hitsPerPage=${ (perPage) ? perPage : 20}`)
             .then((response) => {
-                console.log('response', response)
+                console.log('response', response.data)
                 saveNews(response.data as New)
+                addHits([...hits, ...response.data.hits]);
                 isLoading(false);
             });
     }
@@ -32,6 +34,7 @@ const useNews = () => {
     return {
         loading,
         news,
+        hits,
         getNews,
     }
 }

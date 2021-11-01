@@ -7,10 +7,9 @@ import CategoryDropdown from "./CategoryDropdown";
 
 const News = () => {
 
-    const { loading, news, getNews } = useNews();
+    const { loading, hits, news, getNews } = useNews();
     const [selected, setSelected] = useState('Reactjs');
-    const [hasMore, setHasMore] = useState(true);
-    const { hits } = news;
+    const { page, nbPages } = news;
 
     const filterNews = (value: string) => {
         setSelected(value);
@@ -28,28 +27,21 @@ const News = () => {
                     (
                         hits?.length > 0 ?
                             (
-                                // <InfiniteScroll
-                                //     dataLength={hits.length}
-                                //     next={getNews({ query: selected.toLowerCase(), page: 0 })}
-                                //     hasMore={hasMore}
-                                //     loader={<h3> Loading...</h3>}
-                                //     endMessage={<Empty state="loading" message="Fetching data" />}
-                                // >
-                                //     <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-                                //         {
-                                //             hits.map((hit) => (
-                                //                 <SingleNew key={hit.objectID} hit={hit} />
-                                //             ))
-                                //         }
-                                //     </div>
-                                // </InfiniteScroll>
-                                <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-                                {
-                                    hits.map((hit) => (
-                                        <SingleNew key={hit.objectID} hit={hit} />
-                                    ))
-                                }
-                            </div>
+                                <InfiniteScroll
+                                    dataLength={hits.length}
+                                    next={() => { getNews({ query: selected.toLowerCase(), page: page + 1 }) }}
+                                    hasMore={nbPages > 0}
+                                    loader={<Empty state="loading" message="Fetching data" />}
+                                    endMessage={<Empty state="success" message="Nothing more news for today" />}
+                                >
+                                    <div className="grid gap-6 mt-16 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+                                        {
+                                            hits.map((hit, index) => (
+                                                <SingleNew key={`${hit.objectID}${index}`} hit={hit} index={index} />
+                                            ))
+                                        }
+                                    </div>
+                                </InfiniteScroll>
                             )
                             : <Empty state="error" message="No news found" />
                     )

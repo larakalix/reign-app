@@ -5,9 +5,10 @@ import SingleNewContent from './SingleNewContent';
 
 interface Props {
   hit: Hit;
+  index: number;
 }
 
-const SingleNew = ({ hit }: Props) => {
+const SingleNew = ({ hit, index }: Props) => {
 
   const { objectID, story_url, url } = hit;
 
@@ -18,6 +19,7 @@ const SingleNew = ({ hit }: Props) => {
       ? (
         <Link href={story_url ? story_url! : url!}>
           <a target="_blank" className={`${classRef.current} hover:cursor-pointer hover:`}>
+            <span>Index: { index }</span>
             <SingleNewContent key={objectID} {...{ hit }} />
           </a>
         </Link>
